@@ -11,7 +11,7 @@ root.config(bg="black")
 # Lists to better assort values
 days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 locations = ["Berlin, Germany", "Chennai, India", "London, United Kingdom", "New York City, USA", "Tokyo, Japan", "Los Angeles, USA"]
-timezones = ['Europe/Berlin', 'Asia/Kolkata', 'Europe/London', 'America/New_York', 'Asia/Tokyo','America/Los_Angeles']
+time_zones = ['Europe/Berlin', 'Asia/Kolkata', 'Europe/London', 'America/New_York', 'Asia/Tokyo','America/Los_Angeles']
 
 def clear_frame():
     for widget in root.winfo_children():
@@ -21,7 +21,7 @@ def buttons(location_num):
     clear_frame()
     root.geometry("400x200")  # change window size for appropriate fit
     t = locations[location_num]  # set location
-    buttons.tz = pytz.timezone(timezones[location_num])  # set timezone
+    buttons.tz = pytz.timezone(time_zones[location_num])  # set timezone
 
     # Prepare the labels
     text = Label(root, text=t, font=("Arial", 15), relief='groove', padx=10, pady=7.5, 
