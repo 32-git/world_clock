@@ -1,4 +1,4 @@
-In the following, you will find all the time zones the library 'pytz' has to offer.
+In the following, you will find all the time zones the library 'pytz' has to offer:
 
     Africa/Abidjan
     Africa/Accra
