@@ -9,7 +9,6 @@ root.geometry("600x400")
 root.config(bg="black")
 
 # Lists to better assort values
-days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 locations = ["Berlin, Germany", "Chennai, India", "London, United Kingdom", "New York City, USA", "Tokyo, Japan", "Los Angeles, USA"]
 time_zones = ['Europe/Berlin', 'Asia/Kolkata', 'Europe/London', 'America/New_York', 'Asia/Tokyo','America/Los_Angeles']
 
@@ -38,8 +37,7 @@ def buttons(location_num):
 
 def update():
     time = datetime.now(buttons.tz).strftime("%H:%M:%S")
-    day = days[datetime.today().weekday()]
-    date = datetime.now(buttons.tz).strftime(f"{day}, %d.%m.%Y") 
+    date = datetime.now(buttons.tz).strftime(f"%a, %d.%m.%Y") 
 
     buttons.time_label.config(text=time)
     buttons.date_label.config(text=date)
