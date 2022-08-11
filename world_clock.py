@@ -1,5 +1,4 @@
 import tkinter as tk
-import tkinter.font as font
 import customtkinter as ctk
 from datetime import datetime
 import pytz
@@ -60,8 +59,6 @@ title.place(relx=0.5, rely=0.125, anchor='center')
 
 
 # Make the buttons
-button_font = font.Font(family="Arial", size=16)
-
 berlin = ctk.CTkButton(root, corner_radius=10, image=germany, text="Berlin, Germany", text_font=("Audiowide", 15), 
                         command=lambda: buttons(0), border_width=2, fg_color='LightCyan2', border_color= 'CadetBlue4', 
                         text_color='SkyBlue4',  hover_color='LightSkyBlue2')
