@@ -12,4 +12,9 @@ This has been achieved by creating a simple GUI with the libraries Tkinter and C
 Displayed are hours minutes and seconds of the time in a given time zone.
 Exact times and time zone adjustments were made possible with the libraries 'datetime' and 'pytz', respectively.
 
-In this repository you will find two files: 'fonts_tkinter.py' — a visualisation of the fonts TKinter has to offer (which are really just system fonts), and 'world_clock.py' — the application itself. Furthermore, you will also find a folder called 'button_files', that has images which are for the buttons in the application.
+In this repository you will find four files and a folder: 
+    - 'fonts_tkinter.py' — visualisation of the Tkinter fonts (--> system fonts).
+    - 'pytz_all-time-zones' — list of all pytz time zones.
+    - 'tkinter_colours.jpg' — display of all the Tkinter colours.
+    - 'world_clock.py' — the application itself.
+    - Folder called 'button_files' — has images which are for the buttons in the application.
