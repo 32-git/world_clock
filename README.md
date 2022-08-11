@@ -8,7 +8,7 @@ The above named Python application displays the times of the following locations
   - Los Angeles, U.S.A.
   - Tokyo, Japan
 
-This has been achieved by creating a simple GUI with the library 'Tkinter'. 
+This has been achieved by creating a simple GUI with the libraries Tkinter and CustomTkinter. 
 Displayed are hours minutes and seconds of the time in a given time zone.
 Exact times and time zone adjustments were made possible with the libraries 'datetime' and 'pytz', respectively.
 
