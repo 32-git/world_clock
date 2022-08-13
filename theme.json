@@ -1,0 +1,35 @@
+{
+  "color": {
+      "window_bg_color": ["#ebf0f5", "#181b28"],
+      "button": ["LightCyan2", "LightCyan2"],
+      "button_hover": ["LightSkyBlue1", "LightSkyBlue1"],
+      "button_border": ["CadetBlue4", "CadetBlue4"],
+      "label": [null, null],
+      "text": ["black", "white"],
+      "text_disabled": ["#5e6062", "#7a8894"],
+      "text_button_disabled": ["#7a8894", "#7a8894"],
+      "switch": ["#7681be", "#1f2233"],
+      "switch_progress": ["#6edc5f", "#6edc5f"],
+      "switch_button": ["grey73", "snow"],
+      "switch_button_hover": [null, null],
+      "scrollbar_button": ["#fa00d0", "#fa00d0"],
+      "scrollbar_button_hover": ["#9b45ff", "#9b45ff"]
+  },
+  "text": {
+      "Windows": {
+          "font": "Audiowide",
+          "size": 15
+      }
+  },
+  "shape": {
+      "button_corner_radius": 10,
+      "button_border_width": 2,
+      "label_corner_radius": 3,
+      "switch_border_width": 3,
+      "switch_corner_radius": 20,
+      "switch_button_corner_radius": 1000,
+      "switch_button_length": 1,
+      "scrollbar_corner_radius": 1000,
+      "scrollbar_border_spacing": 4
+  }
+}
