@@ -16,4 +16,4 @@ In this repository you will find four files and a folder:
   - 'pytz_all-time-zones' — list of all pytz time zones.
   - 'tkinter_colours.jpg' — display of all the Tkinter colours.
   - 'world_clock.py' — the application itself.
-  - Folder called 'button_files' — has images which are for the buttons in the application.
+  - Folder called 'img' — has images which are for various objects in the application.
