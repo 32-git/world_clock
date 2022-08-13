@@ -5,13 +5,24 @@ import pytz
 
 # Prepare the GUI
 root = ctk.CTk()
+root.iconbitmap("img\\icon.ico")  # custom defined icon
 root.title("World Clock")
 root.geometry("600x400")
-root.config(bg="white")
+
+ctk.set_appearance_mode("dark")
+ctk.set_default_color_theme("green") # green for switch when on
+root.config(bg=('white', 'black'))
 
 # Lists to better assort values
 locations = ["Berlin, Germany", "Chennai, India", "London, United Kingdom", "New York City, USA", "Tokyo, Japan", "Los Angeles, USA"]
 timezones = ['Europe/Berlin', 'Asia/Kolkata', 'Europe/London', 'America/New_York', 'Asia/Tokyo','America/Los_Angeles']
+
+switch_var = ctk.StringVar(value="on")
+def light_dark_mode():
+    if switch_var.get() == 'on':
+        ctk.set_appearance_mode("dark")
+    else:
+        ctk.set_appearance_mode("light")
 
 def clear_frame():
     for widget in root.winfo_children():
@@ -30,7 +41,6 @@ def buttons(location_num):
 
     buttons.time_label = tk.Label(root, font=("Arial", 40), bg="white", fg="black")
     buttons.time_label.place(relx=0.5, rely=0.5, anchor='center')
-
     buttons.date_label = tk.Label(root, font=("Arial", 11), bg="white", fg="black")
     buttons.date_label.place(relx=0.5, y=175, anchor='center')
 
@@ -45,18 +55,27 @@ def update():
     root.after(1000, update)  # update every second
 
 
+# Make the title
+title = ctk.CTkLabel(root, text="World Clock", text_font=("Audiowide", 25), padx=10, pady=7.5, 
+                        borderwidth=1.5, text_color='cyan4')
+title.place(relx=0.5, rely=0.125, anchor='center')
+
+# Switch for light/dark mode
+img=tk.PhotoImage(file='img\\theme.png')
+icon_label = ctk.CTkLabel(root, image=img)
+icon_label.place(relx=0.84, rely=0.0875)
+theme_switch = ctk.CTkSwitch(root, height=25, width=45, command=light_dark_mode, fg_color='grey57',
+                                button_color=('grey73', 'snow'), text=None, variable=switch_var, 
+                                button_hover_color=None, onvalue="on", offvalue="off")
+theme_switch.place(relx= 0.84, rely= 0.095)
+
+
 # Import the photos necessary for the (custom) buttons
 germany = tk.PhotoImage(file='img\\germany.png')
 india = tk.PhotoImage(file='img\\india.png')
 uk = tk.PhotoImage(file='img\\uk.png')
 usa = tk.PhotoImage(file='img\\usa.png')
 japan = tk.PhotoImage(file='img\\japan.png')
-
-# Make the title
-title = ctk.CTkLabel(root, text="World Clock", text_font=("Audiowide", 25), padx=10, pady=7.5, 
-                        borderwidth=1.5, text_color='cyan4')
-title.place(relx=0.5, rely=0.125, anchor='center')
-
 
 # Make the buttons
 berlin = ctk.CTkButton(root, corner_radius=10, image=germany, text="Berlin, Germany", text_font=("Audiowide", 15), 
