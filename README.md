@@ -15,5 +15,6 @@ In this repository you will find four files and a folder:
   - 'fonts_tkinter.py' — visualisation of the Tkinter fonts (--> system fonts).
   - 'pytz_all-time-zones' — list of all pytz time zones.
   - 'tkinter_colours.jpg' — display of all the Tkinter colours.
+  - 'theme.json' - a theme, containing most colours of the objects in the app.
   - 'world_clock.py' — the application itself.
   - Folder called 'img' — has images which are for various objects in the application.
