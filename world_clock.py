@@ -46,11 +46,11 @@ def update():
 
 
 # Import the photos necessary for the (custom) buttons
-germany = tk.PhotoImage(file='button_files\\germany.png')
-india = tk.PhotoImage(file='button_files\\india.png')
-uk = tk.PhotoImage(file='button_files\\uk.png')
-usa = tk.PhotoImage(file='button_files\\usa.png')
-japan = tk.PhotoImage(file='button_files\\japan.png')
+germany = tk.PhotoImage(file='img\\germany.png')
+india = tk.PhotoImage(file='img\\india.png')
+uk = tk.PhotoImage(file='img\\uk.png')
+usa = tk.PhotoImage(file='img\\usa.png')
+japan = tk.PhotoImage(file='img\\japan.png')
 
 # Make the title
 title = ctk.CTkLabel(root, text="World Clock", text_font=("Audiowide", 25), padx=10, pady=7.5, 
