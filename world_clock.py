@@ -1,10 +1,10 @@
 import tkinter as tk
-from turtle import bgcolor
 import customtkinter as ctk
 from datetime import datetime
 import pytz
 
-# Prepare the GUI
+# ------------ Preparation ------------
+# Create the window
 root = ctk.CTk()
 root.iconbitmap("img\\icon.ico")  # custom defined icon
 root.title("World Clock")
@@ -14,90 +14,91 @@ ctk.set_default_color_theme("theme.json")
 ctk.set_appearance_mode("dark")
 
 # Lists to better assort values
-locations = ["Berlin, Germany", "Chennai, India", "London, United Kingdom", "New York City, USA", "Tokyo, Japan", "Los Angeles, USA"]
+locations = ["Berlin, Germany", "Chennai, India", "London, UK", "New York, USA", "Tokyo, Japan", "Los Angeles, USA"]
 timezones = ['Europe/Berlin', 'Asia/Kolkata', 'Europe/London', 'America/New_York', 'Asia/Tokyo','America/Los_Angeles']
 
+# Import the photos necessary for the buttons / switch
+images = [tk.PhotoImage(file='img\\germany.png'), tk.PhotoImage(file='img\\india.png'), 
+            tk.PhotoImage(file='img\\uk.png'), tk.PhotoImage(file='img\\usa.png'), 
+            tk.PhotoImage(file='img\\japan.png')]
+
+img = tk.PhotoImage(file='img\\theme.png')
 switch_var = ctk.StringVar(value="on")
-def set_mode():
-    if switch_var.get() == 'on':
-        ctk.set_appearance_mode("dark")
-    else:
-        ctk.set_appearance_mode("light")
+# -----------------------------------------------------
 
-def clear_frame():
-    for widget in root.winfo_children():
-        widget.destroy()
+def world_clock():
+    def menu():
+        # Make the title
+        title = ctk.CTkLabel(root, text="World Clock", text_font=("Audiowide", 25), padx=10, pady=7.5, 
+                                borderwidth=1.5, text_color=('#008080','#017878'))
+        title.place(relx=0.5, rely=0.125, anchor='center')
 
-def buttons(location_num):
-    clear_frame()
-    root.geometry("400x200")  # change window size for appropriate fit
-    t = locations[location_num]  # set location
-    buttons.tz = pytz.timezone(timezones[location_num])  # set timezone
+        # Switch for light/dark mode
+        icon = ctk.CTkLabel(root, image=img)
+        icon.place(relx=0.84, rely=0.082)
+        theme_switch = ctk.CTkSwitch(root, height=25, width=45, command=set_mode, text=None, 
+                                        variable=switch_var, onvalue="on", offvalue="off")
+        theme_switch.place(relx= 0.84, rely= 0.095)#
+        
+        # Make the buttons
+        for i in range(6):
+            if i == 5:
+                button = ctk.CTkButton(root, image=images[3], text=locations[i], command=lambda: display_time(i), 
+                            text_color=('#277575', '#369191'))
+            else:
+                button = ctk.CTkButton(root, image=images[i], text=locations[i], command=lambda: display_time(i), 
+                            text_color=('#277575', '#369191'))
+            buttons.append(button)
+        
+        # Place all the buttons
+        buttons[0].place(relx=0.23, rely=0.35, anchor='center') # Berlin, Germany
+        buttons[1].place(relx=0.77, rely=0.35, anchor='center') # Chennai, India
+        buttons[2].place(relx=0.23, rely=0.6, anchor='center') # London, UK
+        buttons[3].place(relx=0.77, rely=0.6, anchor='center') # New York, USA
+        buttons[4].place(relx=0.23, rely=0.85, anchor='center') # Tokyo, Japan
+        buttons[5].place(relx=0.77, rely=0.85, anchor='center') # Los Angeles, USA
 
-    # Prepare the labels
-    text = ctk.CTkLabel(root, text=t, text_font=("Arial", 16), padx=10, pady=7.5, 
-                    borderwidth=3)
-    text.place(relx=0.5, y=20, anchor='center')
+    def set_mode():
+        # switch between light/dark mode
+        if switch_var.get() == 'on':
+            ctk.set_appearance_mode("dark")
+        else:
+            ctk.set_appearance_mode("light")
 
-    buttons.time_label = ctk.CTkLabel(root, text_font=("Arial", 42))
-    buttons.time_label.place(relx=0.5, rely=0.5, anchor='center')
-    buttons.date_label = ctk.CTkLabel(root, text_font=("Arial", 12))
-    buttons.date_label.place(relx=0.5, y=175, anchor='center')
+    def clear_frame():
+        for widget in root.winfo_children():
+            widget.destroy()
 
-    update()
+    def display_time(num):
+        clear_frame()
+        root.geometry("400x200")  # change window size for appropriate fit
+        location = locations[num]  # set location
+        display_time.tz = pytz.timezone(timezones[num])  # set timezone
 
-def update():
-    time = datetime.now(buttons.tz).strftime("%H:%M:%S")
-    date = datetime.now(buttons.tz).strftime(f"%A, %d.%m.%Y") 
+        # Prepare the labels
+        text = ctk.CTkLabel(root, text=location, text_font=("Arial", 16), padx=10, pady=7.5, 
+                        borderwidth=3)
+        text.place(relx=0.5, y=20, anchor='center')
 
-    buttons.time_label.configure(text=time)
-    buttons.date_label.configure(text=date)
-    root.after(1000, update)  # update every second
+        display_time.time_label = ctk.CTkLabel(root, text_font=("Arial", 42))
+        display_time.time_label.place(relx=0.5, rely=0.5, anchor='center')
+        display_time.date_label = ctk.CTkLabel(root, text_font=("Arial", 12))
+        display_time.date_label.place(relx=0.5, y=175, anchor='center')
 
-# Make the title
-title = ctk.CTkLabel(root, text="World Clock", text_font=("Audiowide", 25), padx=10, pady=7.5, 
-                        borderwidth=1.5, text_color=('#008080','#017878'))
-title.place(relx=0.5, rely=0.125, anchor='center')
+        update()
 
-# Switch for light/dark mode
-img=tk.PhotoImage(file='img\\theme.png')
-icon = ctk.CTkLabel(root, image=img)
-icon.place(relx=0.84, rely=0.082)
-theme_switch = ctk.CTkSwitch(root, height=25, width=45, command=set_mode, text=None, 
-                                variable=switch_var, onvalue="on", offvalue="off")
-theme_switch.place(relx= 0.84, rely= 0.095)
+    def update():
+        time = datetime.now(display_time.tz).strftime("%H:%M:%S")
+        date = datetime.now(display_time.tz).strftime(f"%A, %d.%m.%Y") 
 
+        display_time.time_label.configure(text=time)
+        display_time.date_label.configure(text=date)
+        root.after(1000, update)  # update every second
+    
+    menu()
 
-# Import the photos necessary for the (custom) buttons
-germany = tk.PhotoImage(file='img\\germany.png')
-india = tk.PhotoImage(file='img\\india.png')
-uk = tk.PhotoImage(file='img\\uk.png')
-usa = tk.PhotoImage(file='img\\usa.png')
-japan = tk.PhotoImage(file='img\\japan.png')
-
-# Make the buttons
-berlin = ctk.CTkButton(root, image=germany, text=locations[0], command=lambda: buttons(0), 
-                        text_color=('#277575', '#369191'))
-berlin.place(relx=0.23, rely=0.35, anchor='center')
-
-chennai = ctk.CTkButton(root, image=india, text=locations[1], command=lambda: buttons(1), 
-                        text_color=('#277575', '#369191'))
-chennai.place(relx=0.77, rely=0.35, anchor='center')
-
-london = ctk.CTkButton(root, image=uk, text="London, UK", command=lambda: buttons(2), 
-                        text_color=('#277575', '#369191'))
-london.place(relx=0.23, rely=0.6, anchor='center')
-
-new_york = ctk.CTkButton(root, image=usa, text="New York, USA", command=lambda: buttons(3), 
-                        text_color=('#277575', '#369191'))
-new_york.place(relx=0.77, rely=0.6, anchor='center')
-
-tokyo = ctk.CTkButton(root, image=japan, text=locations[4], command=lambda: buttons(4), 
-                        text_color=('#277575', '#369191'))
-tokyo.place(relx=0.23, rely=0.85, anchor='center')
-
-la = ctk.CTkButton(root, image=usa, text=locations[5], command=lambda: buttons(5), 
-                        text_color=('#277575', '#369191'))
-la.place(relx=0.77, rely=0.85, anchor='center')
+# ---------- Run it ----------
+buttons = []
+world_clock()
 
 root.mainloop()
