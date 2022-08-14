@@ -17,4 +17,4 @@ In this repository you will find four files and a folder:
   - 'tkinter_colours.jpg' — display of all the Tkinter colours.
   - 'theme.json' - a theme, containing most colours of the objects in the app.
   - 'world_clock.py' — the application itself.
-  - Folder called 'img' — has images which are for various objects in the application.
+  - 'img' folder — has images which are for various objects in the application.
