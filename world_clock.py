@@ -1,4 +1,5 @@
 import tkinter as tk
+from turtle import bgcolor
 import customtkinter as ctk
 from datetime import datetime
 import pytz
@@ -8,9 +9,9 @@ root = ctk.CTk()
 root.iconbitmap("img\\icon.ico")  # custom defined icon
 root.title("World Clock")
 root.geometry("600x400")
-
-ctk.set_appearance_mode("dark")
+root.configure(bg=("#ebf0f5", "#19191a"))
 ctk.set_default_color_theme("theme.json")
+ctk.set_appearance_mode("dark")
 
 # Lists to better assort values
 locations = ["Berlin, Germany", "Chennai, India", "London, United Kingdom", "New York City, USA", "Tokyo, Japan", "Los Angeles, USA"]
@@ -53,18 +54,17 @@ def update():
     buttons.date_label.configure(text=date)
     root.after(1000, update)  # update every second
 
-
 # Make the title
 title = ctk.CTkLabel(root, text="World Clock", text_font=("Audiowide", 25), padx=10, pady=7.5, 
-                        borderwidth=1.5, text_color='cyan4')
+                        borderwidth=1.5, text_color=('#008080','#017878'))
 title.place(relx=0.5, rely=0.125, anchor='center')
 
 # Switch for light/dark mode
 img=tk.PhotoImage(file='img\\theme.png')
 icon = ctk.CTkLabel(root, image=img)
-icon.place(relx=0.84, rely=0.0875)
-theme_switch = ctk.CTkSwitch(root, height=25, width=45, command=set_mode, fg_color='grey57',
-                                text=None, variable=switch_var, onvalue="on", offvalue="off")
+icon.place(relx=0.84, rely=0.082)
+theme_switch = ctk.CTkSwitch(root, height=25, width=45, command=set_mode, text=None, 
+                                variable=switch_var, onvalue="on", offvalue="off")
 theme_switch.place(relx= 0.84, rely= 0.095)
 
 
@@ -77,27 +77,27 @@ japan = tk.PhotoImage(file='img\\japan.png')
 
 # Make the buttons
 berlin = ctk.CTkButton(root, image=germany, text=locations[0], command=lambda: buttons(0), 
-                        text_color='SkyBlue4')
+                        text_color=('#277575', '#369191'))
 berlin.place(relx=0.23, rely=0.35, anchor='center')
 
 chennai = ctk.CTkButton(root, image=india, text=locations[1], command=lambda: buttons(1), 
-                        text_color='SkyBlue4')
+                        text_color=('#277575', '#369191'))
 chennai.place(relx=0.77, rely=0.35, anchor='center')
 
 london = ctk.CTkButton(root, image=uk, text="London, UK", command=lambda: buttons(2), 
-                        text_color='SkyBlue4')
+                        text_color=('#277575', '#369191'))
 london.place(relx=0.23, rely=0.6, anchor='center')
 
 new_york = ctk.CTkButton(root, image=usa, text="New York, USA", command=lambda: buttons(3), 
-                        text_color='SkyBlue4')
+                        text_color=('#277575', '#369191'))
 new_york.place(relx=0.77, rely=0.6, anchor='center')
 
 tokyo = ctk.CTkButton(root, image=japan, text=locations[4], command=lambda: buttons(4), 
-                        text_color='SkyBlue4')
+                        text_color=('#277575', '#369191'))
 tokyo.place(relx=0.23, rely=0.85, anchor='center')
 
 la = ctk.CTkButton(root, image=usa, text=locations[5], command=lambda: buttons(5), 
-                        text_color='SkyBlue4')
+                        text_color=('#277575', '#369191'))
 la.place(relx=0.77, rely=0.85, anchor='center')
 
 root.mainloop()

@@ -1,14 +1,13 @@
 {
   "color": {
-      "window_bg_color": ["#ebf0f5", "#181b28"],
-      "button": ["LightCyan2", "LightCyan2"],
-      "button_hover": ["LightSkyBlue1", "LightSkyBlue1"],
+      "button": ["LightCyan2", "#023030"],
+      "button_hover": ["LightSkyBlue1", "#054d4d"],
       "button_border": ["CadetBlue4", "CadetBlue4"],
       "label": [null, null],
       "text": ["black", "white"],
       "text_disabled": ["#5e6062", "#7a8894"],
       "text_button_disabled": ["#7a8894", "#7a8894"],
-      "switch": ["#7681be", "#1f2233"],
+      "switch": ["grey57", "grey57"],
       "switch_progress": ["#6edc5f", "#6edc5f"],
       "switch_button": ["grey73", "snow"],
       "switch_button_hover": [null, null],
